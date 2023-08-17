@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('admin')
+    ->group(__DIR__ . '/api/admin.php');
+// Route::prefix('players')
+//     ->group(__DIR__ . '/api/agents.php');
