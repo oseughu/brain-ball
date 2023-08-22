@@ -16,7 +16,7 @@ LABEL fly_launch_runtime="laravel"
 # copy application code, skipping files based on .dockerignore
 COPY . /var/www/html
 
-RUN apt-get update; apt install -y libpq
+# RUN apt-get update; apt install -y libpq
 RUN composer install --optimize-autoloader --no-dev \
     && mkdir -p storage/logs \
     && php artisan optimize:clear \
