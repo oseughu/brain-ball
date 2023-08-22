@@ -89,7 +89,7 @@ RUN rsync -ar /var/www/html/public-npm/ /var/www/html/public/ \
     && rm -rf /var/www/html/public-npm \
     && chown -R www-data:www-data /var/www/html/public
 
-RUN php artisan migrate
+RUN php artisan migrate -y
 EXPOSE 8080
 
 ENTRYPOINT ["/entrypoint"]
