@@ -32,4 +32,4 @@ return new class extends Migration
     }
 };
 
-//$table->foreignUuid('user_id')->constrained();
+// $table->foreignUuid('user_id')->constrained();
