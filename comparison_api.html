@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Comparison Matrix</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Player Comparison Matrix</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Statistic</th>
+            <th id="player1Name">Player 1</th>
+            <th id="player2Name">Player 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Goals</td>
+            <td id="player1Goals"></td>
+            <td id="player2Goals"></td>
+        </tr>
+        <tr>
+            <td>Assists</td>
+            <td id="player1Assists"></td>
+            <td id="player2Assists"></td>
+        </tr>
+        <tr>
+            <td>Chances Created</td>
+            <td id="player1Chances"></td>
+            <td id="player2Chances"></td>
+        </tr>
+        <tr>
+            <td>Tackles Made</td>
+            <td id="player1Tackles"></td>
+            <td id="player2Tackles"></td>
+        </tr>
+        <tr>
+            <td>Market Value</td>
+            <td id="player1Value"></td>
+            <td id="player2Value"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function populateData(playerId, prefix) {
+        fetch(`https://api.example.com/players/${playerId}/stats`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById(`${prefix}Name`).innerText = data.name;
+            document.getElementById(`${prefix}Goals`).innerText = data.goals;
+            document.getElementById(`${prefix}Assists`).innerText = data.assists;
+            document.getElementById(`${prefix}Chances`).innerText = data.chancesCreated;
+            document.getElementById(`${prefix}Tackles`).innerText = data.tacklesMade;
+            document.getElementById(`${prefix}Value`).innerText = data.marketValue;
+        })
+        .catch(error => console.error('Error fetching player data:', error));
+    }
+
+    // Example: Fetch data for two players with IDs 1 and 2
+    populateData(1, 'player1');
+    populateData(2, 'player2');
+</script>
+
+</body>
+</html>
