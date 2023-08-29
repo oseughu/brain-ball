@@ -15,7 +15,7 @@ class AuthController extends Controller
             'name' => 'required|string|min:4',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|confirmed|min:8',
-            'role' => 'required|string|in:player,scout,admin,analyst,manager'
+            'role' => 'required|string|in:scout,admin,analyst,manager,sporting_director'
         ]);
 
         $user = User::create([
@@ -26,7 +26,7 @@ class AuthController extends Controller
         return response()->json([
             'message' => "Account created successfully",
             'token' => $user->createToken('login')->plainTextToken
-        ]);
+        ], 201);
     }
 
     public function login(Request $request)
