@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\TransferMarket\TransferMarketFacade;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -183,7 +184,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
-    ])->toArray(),
-
+        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'TransferMarket' => TransferMarketFacade::class
+    ])->toArray()
 ];
