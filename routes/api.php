@@ -26,8 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/search-players', [PlayerController::class, 'searchPlayers'])
+    Route::post('/search-players', [PlayerController::class, 'searchPlayers'])
         ->name('players.search');
+    Route::post('/get-player-stats', [PlayerController::class, 'getPlayerStats'])
+        ->name('players.stats');
 });
 
 // Route::prefix('admin')

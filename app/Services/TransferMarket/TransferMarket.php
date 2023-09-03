@@ -18,7 +18,7 @@ class TransferMarket
     public function getPlayerStats(string $playerId)
     {
         $response = $this->getHttpClient()->get(
-            "/players/get-performance?domain=com&id=$playerId",
+            "/players/get-performance-summary?domain=com&id=$playerId",
         );
 
         if (!$response->successful()) {
