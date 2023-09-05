@@ -48,10 +48,21 @@ class StatsController extends Controller
         return response()->json($result);
     }
 
+    public function getPlayerStats(Request $request)
+    {
+        $data = $request->validate([
+            'player' => 'required|integer',
+            'season' => 'nullable|digits:4',
+        ]);
+
+        $result = \TransferMarket::getPlayerStats($data['player'], $data['season']);
+        return response()->json($result);
+    }
+
     public function getMarketValue(Request $request)
     {
         $data = $request->validate([
-            'player' => 'required|numeric',
+            'player' => 'required|integer',
         ]);
 
         $result = \TransferMarket::getMarketValue($data['player']);
@@ -68,16 +79,5 @@ class StatsController extends Controller
         $result = \TransferMarket::search($data['player']);
 
         return response()->json($result['players']);
-    }
-
-    public function getPlayerStats(Request $request)
-    {
-        $data = $request->validate([
-            'player' => 'required|string',
-            'season' => 'nullable|digits:4',
-        ]);
-
-        $result = \TransferMarket::getPlayerStats($data['player'], $data['season'] ?? date("Y"));
-        return response()->json($result);
     }
 }
