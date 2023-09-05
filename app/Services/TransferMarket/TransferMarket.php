@@ -83,7 +83,7 @@ class TransferMarket
     public function getSquad(int $clubId, ?int $seasonId)
     {
         $response = $this->getHttpClient()->get(
-            "/clubs/get-squad?domain=com&id=$clubId&seasonID=$seasonId",
+            "/clubs/get-squad?domain=com&id=$clubId&saison_id=$seasonId",
         );
 
         if (!$response->successful()) {
