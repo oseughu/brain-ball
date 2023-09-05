@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,25 +27,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/search-players', [PlayerController::class, 'searchPlayers'])
+    Route::post('/search-players', [StatsController::class, 'searchPlayers'])
         ->name('players.search');
 
-    Route::post('/get-player-stats', [PlayerController::class, 'getPlayerStats'])
+    Route::post('/get-player-stats', [StatsController::class, 'getPlayerStats'])
         ->name('players.stats');
 
-    Route::post('/get-market-value', [PlayerController::class, 'getMarketValue'])
+    Route::post('/get-market-value', [StatsController::class, 'getMarketValue'])
         ->name('players.market-value');
 
-    Route::get('/get-competitions', [PlayerController::class, 'getCompetitions'])
+    Route::get('/get-competitions', [StatsController::class, 'getCompetitions'])
         ->name('competitions.get');
 
-    Route::post('/get-seasons', [PlayerController::class, 'getSeasons'])
+    Route::post('/get-seasons', [StatsController::class, 'getSeasons'])
         ->name('seasons.get');
 
-    Route::post('/get-teams', [PlayerController::class, 'getTeams'])
+    Route::post('/get-teams', [StatsController::class, 'getTeams'])
         ->name('teams.get');
 
-    Route::post('/get-squad', [PlayerController::class, 'getSquad'])
+    Route::post('/get-squad', [StatsController::class, 'getSquad'])
         ->name('squad.get');
 });
 
